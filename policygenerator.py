@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
   my_big_var = []
   for my_service in my_services:
-      my_content = json.load(open(my_service))
+    my_content = json.load(open(my_service + ".json" ))
       my_big_var.append(my_content)
 
 
