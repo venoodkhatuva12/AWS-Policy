@@ -37,7 +37,7 @@ if __name__ == '__main__':
 
   print my_service
 
-  my_content = json.load(open(my_service))
+  #my_content = json.load(open(my_service))
   print(my_content)
 
   if("Resource" in my_content):
