@@ -39,6 +39,9 @@ if __name__ == '__main__':
 
   #my_content = json.load(open(my_service))
   print(my_content)
+  
+  with open('output.json', 'w') as outfile:
+    json.dump(my_content, outfile)
 
   #if("Resource" in my_content):
      #for my_resource in my_content["Resource"]:
