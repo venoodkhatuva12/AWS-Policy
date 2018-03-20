@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
   my_big_var = []
   for my_service in my_services:
-    for my_statement in my_service["my_Statement"]:
+    for my_statement in my_service[my_statement]:
       my_content = json.load(open(my_statement))
       my_big_var.append(my_content)
 
