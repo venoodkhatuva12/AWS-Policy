@@ -1,0 +1,22 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "events:PutEvents",
+                "events:PutTargets",
+                "events:PutRule",
+                "events:TestEventPattern"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": "events:*",
+            "Resource": "arn:aws:events:REGION_HERE:ACCOUNT_NUMBER_HERE:rule/COMPONENT_NAME_HERE*"
+        }
+    ]
+}

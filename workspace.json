@@ -1,0 +1,24 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "workspaces:DescribeWorkspacesConnectionStatus",
+                "workspaces:DeleteTags",
+                "workspaces:CreateTags",
+                "workspaces:DescribeTags",
+                "workspaces:DescribeWorkspaces",
+                "workspaces:DescribeWorkspaceDirectories"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": "workspaces:*",
+            "Resource": "arn:aws:sky:REGION_HERE:ACCOUNT_NUMBER_HERE:workspacebundle/*"
+        }
+    ]
+}

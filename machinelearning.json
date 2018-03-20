@@ -1,0 +1,27 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "machinelearning:DescribeEvaluations",
+                "machinelearning:DescribeBatchPredictions",
+                "machinelearning:DescribeMLModels",
+                "machinelearning:DescribeDataSources"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": "machinelearning:*",
+            "Resource": [
+                "arn:aws:machinelearning:REGION_HERE:ACCOUNT_NUMBER_HERE:batchprediction/*",
+                "arn:aws:machinelearning:REGION_HERE:ACCOUNT_NUMBER_HERE:mlmodel/*",
+                "arn:aws:machinelearning:REGION_HERE:ACCOUNT_NUMBER_HERE:datasource/*",
+                "arn:aws:machinelearning:REGION_HERE:ACCOUNT_NUMBER_HERE:evaluation/*"
+            ]
+        }
+    ]
+}

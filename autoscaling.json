@@ -1,0 +1,39 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "autoscaling:DescribeAutoScalingNotificationTypes",
+                "autoscaling:DescribeLifecycleHookTypes",
+                "autoscaling:DescribeAutoScalingInstances",
+                "autoscaling:DescribeTerminationPolicyTypes",
+                "autoscaling:DescribeScalingProcessTypes",
+                "autoscaling:DescribePolicies",
+                "autoscaling:DescribeTags",
+                "autoscaling:DescribeLaunchConfigurations",
+                "autoscaling:DescribeMetricCollectionTypes",
+                "autoscaling:DescribeLoadBalancers",
+                "autoscaling:DescribeLifecycleHooks",
+                "autoscaling:DescribeAdjustmentTypes",
+                "autoscaling:DescribeScalingActivities",
+                "autoscaling:DescribeAutoScalingGroups",
+                "autoscaling:DescribeAccountLimits",
+                "autoscaling:DescribeScheduledActions",
+                "autoscaling:DescribeLoadBalancerTargetGroups",
+                "autoscaling:DescribeNotificationConfigurations"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": "autoscaling:*",
+            "Resource": [
+                "arn:aws:autoscaling:REGION_HERE:ACCOUNT_NUMBER_HERE:autoScalingGroup:*:autoScalingGroupName/COMPONENT_NAME_HERE*",
+                "arn:aws:autoscaling:REGION_HERE:ACCOUNT_NUMBER_HERE:launchConfiguration:*:launchConfigurationName/COMPONENT_NAME_HERE*"
+            ]
+        }
+    ]
+}

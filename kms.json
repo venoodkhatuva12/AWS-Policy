@@ -1,0 +1,28 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "kms:ListKeys",
+                "kms:GenerateRandom",
+                "kms:ListAliases",
+                "kms:GenerateDataKey",
+                "kms:ReEncryptTo",
+                "kms:CreateKey",
+                "kms:ReEncryptFrom"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": "kms:*",
+            "Resource": [
+                "arn:aws:kms:REGION_HERE:ACCOUNT_NUMBER_HERE:alias/*",
+                "arn:aws:kms:REGION_HERE:ACCOUNT_NUMBER_HERE:key/*"
+            ]
+        }
+    ]
+}

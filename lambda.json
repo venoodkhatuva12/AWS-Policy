@@ -1,0 +1,27 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "lambda:CreateFunction",
+                "lambda:UpdateEventSourceMapping",
+                "lambda:ListFunctions",
+                "lambda:GetEventSourceMapping",
+                "lambda:ListEventSourceMappings",
+                "lambda:UpdateFunctionConfiguration",
+                "lambda:GetAccountSettings",
+                "lambda:CreateEventSourceMapping",
+                "lambda:DeleteEventSourceMapping"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": "lambda:*",
+            "Resource": "arn:aws:lambda:REGION_HERE:ACCOUNT_NUMBER_HERE:function:COMPONENT_NAME_HERE* "
+        }
+    ]
+}

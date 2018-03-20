@@ -1,0 +1,43 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "waf:ListByteMatchSets",
+                "waf:ListWebACLs",
+                "waf:ListRegexMatchSets",
+                "waf:ListIPSets",
+                "waf:ListRateBasedRules",
+                "waf:ListSqlInjectionMatchSets",
+                "waf:ListSizeConstraintSets",
+                "waf:GetChangeTokenStatus",
+                "waf:ListXssMatchSets",
+                "waf:ListGeoMatchSets",
+                "waf:GetChangeToken",
+                "waf:ListRules",
+                "waf:ListRegexPatternSets"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": "waf:*",
+            "Resource": [
+                "arn:aws:waf::ACCOUNT_NUMBER_HERE:sizeconstraintset/*",
+                "arn:aws:waf::ACCOUNT_NUMBER_HERE:ipset/*",
+                "arn:aws:waf::ACCOUNT_NUMBER_HERE:sqlinjectionmatchset/*",
+                "arn:aws:waf::ACCOUNT_NUMBER_HERE:regexmatchset/*",
+                "arn:aws:waf::ACCOUNT_NUMBER_HERE:geomatchset/*",
+                "arn:aws:waf::ACCOUNT_NUMBER_HERE:rule/*",
+                "arn:aws:waf::ACCOUNT_NUMBER_HERE:bytematchset/*",
+                "arn:aws:waf::ACCOUNT_NUMBER_HERE:ratebasedrule/*",
+                "arn:aws:waf::ACCOUNT_NUMBER_HERE:regexpatternset/*",
+                "arn:aws:waf::ACCOUNT_NUMBER_HERE:xssmatchset/*",
+                "arn:aws:waf::ACCOUNT_NUMBER_HERE:webacl/*"
+            ]
+        }
+    ]
+}
