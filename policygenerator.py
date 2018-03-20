@@ -40,9 +40,9 @@ if __name__ == '__main__':
   #my_content = json.load(open(my_service))
   print(my_content)
 
-  if("Resource" in my_content):
-     for my_resource in my_content["Resource"]:
-       if("REGION_HERE" in my_resource):
-         my_resource.replace("REGION_HERE", args.region)
+  #if("Resource" in my_content):
+     #for my_resource in my_content["Resource"]:
+       #if("REGION_HERE" in my_resource):
+         #my_resource.replace("REGION_HERE", args.region)
 
-  print(my_content)
+  #print(my_content)
