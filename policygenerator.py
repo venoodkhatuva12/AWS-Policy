@@ -37,12 +37,12 @@ def merge_json(input_files,output_file="output.json"):
                         if type(file_content["Statement"][i]["Resource"]) == list:
                             for j,resource in enumerate(policy["Resource"]):
                                if "REGION_HERE" in policy["Resource"][j]:
-                                   file_content["Statement"][i]["Resource"][j] = file_content["Statement"][i]["Resource"][j].replace("REGION_HERE",args.region)
+                                  file_content["Statement"][i]["Resource"][j] = file_content["Statement"][i]["Resource"][j].replace("REGION_HERE",args.region)
+                                  if "COMPONENT_NAME_HERE" in policy["Resource"][j]:
+                                   file_content["Statement"][i]["Resource"][j] = file_content["Statement"][i]["Resource"][j].replace("COMPONENT_NAME_HERE",args.component)           
                         elif "REGION_HERE" in policy["Resource"]:
                             file_content["Statement"][i]["Resource"] = file_content["Statement"][i]["Resource"].replace("REGION_HERE",args.region)
-                        
-                        if "COMPONENT_NAME_HERE" in policy["Resource"][j]:
-                                   file_content["Statement"][i]["Resource"][j] = file_content["Statement"][i]["Resource"][j].replace("COMPONENT_NAME_HERE",args.component)
+
                         elif "COMPONENT_NAME_HERE" in policy["Resource"]:
                             file_content["Statement"][i]["Resource"] = file_content["Statement"][i]["Resource"].replace("COMPONENT_NAME_HERE",args.component)
 
