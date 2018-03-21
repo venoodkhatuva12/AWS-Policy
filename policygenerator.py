@@ -1,5 +1,6 @@
 #!/usr/bin/python
-# import boto3
+
+import boto3
 import argparse
 import json
 import os
@@ -20,9 +21,6 @@ def parse_arguments():
 
 
 def merge_json(input_files,output_file="output.json"):
-    # Write file content
-    if os.path.isfile(output_file):
-         os.remove(output_file)
     # read json file from current dir
     for file in input_files:
         file = file + ".json"
@@ -30,14 +28,19 @@ def merge_json(input_files,output_file="output.json"):
             # Read file content
             with open(file,"r") as f:
                 file_content = json.load(f)
-
+            # Write file content
+            if os.path.isfile(output_file):
+                os.remove(output_file)
             with open(output_file,"a") as json_file:
                 for i, policy in enumerate(file_content["Statement"]):
                     if "Resource" in policy:
-                        if "REGION_HERE" in policy["Resource"]:
+                        if type(file_content["Statement"][i]["Resource"]) == list:
+                            for j,resource in enumerate(policy["Resource"]):
+                               if "REGION_HERE" in policy["Resource"][j]:
+                                   file_content["Statement"][i]["Resource"][j] = file_content["Statement"][i]["Resource"][j].replace("REGION_HERE",args.region)
+                        elif "REGION_HERE" in policy["Resource"]:
                             file_content["Statement"][i]["Resource"] = file_content["Statement"][i]["Resource"].replace("REGION_HERE",args.region)
-                        if "COMPONENT_NAME_HERE" in policy["Resource"]:
-                            file_content["Statement"][i]["Resource"] = file_content["Statement"][i]["Resource"].replace("COMPONENT_NAME_HERE",args.component)
+
                 json.dump(file_content, json_file,indent=4, sort_keys=True)
             print "file has been updated"
         else:
