@@ -28,15 +28,19 @@ def merge_json(input_files,output_file="output.json"):
             with open(file,"r") as f:
                 file_content = json.load(f)
             # Write file content
+            if os.path.isfile(output_file):
+                os.remove(output_file)
             with open(output_file,"a") as json_file:
+                for i, policy in enumerate(file_content["Statement"]):
+                    if "Resource" in policy:
+                        if "REGION_HERE" in policy["Resource"]:
+                            file_content["Statement"][i]["Resource"] = file_content["Statement"][i]["Resource"].replace("REGION_HERE",args.region)
+
                 json.dump(file_content, json_file,indent=4, sort_keys=True)
             print "file has been updated"
         else:
             print "Policy does not exists"
 
-                # Update Region
-                # if "Resource" in file_content:
-                #    print file_content
 
 
 
