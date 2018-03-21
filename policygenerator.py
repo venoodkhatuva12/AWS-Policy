@@ -21,7 +21,7 @@ def parse_arguments():
 
 
 def merge_json(input_files,output_file="output.json"):
-    # Write file content
+  #removing old output file
     if os.path.isfile(output_file):
          os.remove(output_file)
     # read json file from current dir
@@ -31,6 +31,7 @@ def merge_json(input_files,output_file="output.json"):
             # Read file content
             with open(file,"r") as f:
                 file_content = json.load(f)
+            # Write file content
             with open(output_file,"a") as json_file:
                 for i, policy in enumerate(file_content["Statement"]):
                     if "Resource" in policy:
