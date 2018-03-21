@@ -35,7 +35,8 @@ def merge_json(input_files,output_file="output.json"):
                     if "Resource" in policy:
                         if "REGION_HERE" in policy["Resource"]:
                             file_content["Statement"][i]["Resource"] = file_content["Statement"][i]["Resource"].replace("REGION_HERE",args.region)
-
+                        if "COMPONENT_NAME_HERE" in policy["Resource"]:
+                            file_content["Statement"][i]["Resource"] = file_content["Statement"][i]["Resource"].replace("COMPONENT_NAME_HERE",args.component)
                 json.dump(file_content, json_file,indent=4, sort_keys=True)
             print "file has been updated"
         else:
