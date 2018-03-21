@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import boto3
+# import boto3
 import argparse
 import json
 import os
@@ -21,46 +21,44 @@ def parse_arguments():
 
 
 def merge_json(input_files,output_file="output.json"):
-  #removing old output file
+    # removing old output file
     if os.path.isfile(output_file):
          os.remove(output_file)
     # read json file from current dir
+    output = []
     for file in input_files:
         file = file + ".json"
         if os.path.isfile(file):
             # Read file content
             with open(file,"r") as f:
                 file_content = json.load(f)
-            # Write file content
-            with open(output_file,"a") as json_file:
-                for i, policy in enumerate(file_content["Statement"]):
-                    if "Resource" in policy:
-                        if type(file_content["Statement"][i]["Resource"]) == list:
-                            for j,resource in enumerate(policy["Resource"]):
-                               if "REGION_HERE" in policy["Resource"][j]:
-                                  file_content["Statement"][i]["Resource"][j] = file_content["Statement"][i]["Resource"][j].replace("REGION_HERE",args.region)
-                               if "COMPONENT_NAME_HERE" in policy["Resource"][j]:
-                                   file_content["Statement"][i]["Resource"][j] = file_content["Statement"][i]["Resource"][j].replace("COMPONENT_NAME_HERE",args.component)           
-                        else:
-                           if "REGION_HERE" in policy["Resource"]:
-                               file_content["Statement"][i]["Resource"] = file_content["Statement"][i]["Resource"].replace("REGION_HERE",args.region)
-                           if "COMPONENT_NAME_HERE" in policy["Resource"]:
-                               file_content["Statement"][i]["Resource"] = file_content["Statement"][i]["Resource"].replace("COMPONENT_NAME_HERE",args.component)
-
-                json.dump(file_content, json_file,indent=4, sort_keys=True)
-            print "file has been updated"
+            for i, policy in enumerate(file_content["Statement"]):
+                if "Resource" in policy:
+                    if type(file_content["Statement"][i]["Resource"]) == list:
+                        for j,resource in enumerate(policy["Resource"]):
+                           if "REGION_HERE" in policy["Resource"][j]:
+                              file_content["Statement"][i]["Resource"][j] = file_content["Statement"][i]["Resource"][j].replace("REGION_HERE",args.region)
+                           if "COMPONENT_NAME_HERE" in policy["Resource"][j]:
+                              file_content["Statement"][i]["Resource"][j] = file_content["Statement"][i]["Resource"][j].replace("COMPONENT_NAME_HERE",args.component)
+                    else:
+                       if "REGION_HERE" in policy["Resource"]:
+                           file_content["Statement"][i]["Resource"] = file_content["Statement"][i]["Resource"].replace("REGION_HERE",args.region)
+                       if "COMPONENT_NAME_HERE" in policy["Resource"]:
+                           file_content["Statement"][i]["Resource"] = file_content["Statement"][i]["Resource"].replace("COMPONENT_NAME_HERE",args.component)
+                output.append(file_content)
         else:
             print "Policy does not exists"
-
-
+    print output
+    # Write file content
+    with open(output_file,"a") as json_file:
+      json.dump(output, json_file,indent=4, sort_keys=True)
+      print "file has been updated"
 
 
 if __name__ == '__main__':
 
   args = parse_arguments()
-
   my_services = args.services.split(",")
-
   print args.region
   print args.component
   merge_json(my_services)
