@@ -1,12 +1,10 @@
 #!/usr/bin/python
 
-#
-import boto3
+#import boto3
 import argparse
 import json
 import os
-from pprint
-import pprint
+from pprint import pprint
 
 def parse_arguments():
     parser = argparse.ArgumentParser()
