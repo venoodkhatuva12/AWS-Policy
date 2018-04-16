@@ -32,9 +32,6 @@ def merge_json(input_files,output_file="output.json"):
              }
     for file in input_files:
     	file = file + ".json"
-    		if file = "elasticcache.json"
-    				print "use service link policy cant use managed policy"
-    		else:
         if os.path.isfile(file):
             # Read file content
             with open(file,"r") as f:
