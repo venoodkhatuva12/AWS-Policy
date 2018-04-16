@@ -1,0 +1,35 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "ds:*",
+            "Resource": "*"
+        },
+        {
+        	"Effect": "Allow",
+            "Action": [
+                "ec2:RevokeSecurityGroupIngress",
+                "ec2:Authorize*",
+                "ec2:RevokeSecurityGroupEgress",
+                "ec2:DeleteSecurityGroup"
+            ],
+            "Resource": "arn:aws:ec2:REGION_HERE:ACCOUNT_NUMBER_HERE:security-group/*"
+        },
+        {
+        	"Effect": "Allow",
+            "Action": [
+                "ec2:CreateNetworkInterface",
+                "ec2:Describe*",
+                "ec2:CreateSecurityGroup"
+               
+            ],
+            "Resource": "*"
+        },
+       {
+       	"Effect": "Allow",
+            "Action": "sns:GetTopicAttributes",
+            "Resource": "arn:aws:sns:REGION_HERE :ACCOUNT_NUMBER_HERE :COMPONENT_NAME_HERE "
+        }
+    ]
+}

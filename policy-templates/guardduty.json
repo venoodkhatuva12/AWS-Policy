@@ -1,0 +1,30 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "guardduty:ListDetectors",
+                "guardduty:DeclineInvitations",
+                "guardduty:CreateDetector",
+                "guardduty:DeleteInvitations",
+                "guardduty:GetInvitationsCount",
+                "guardduty:ListInvitations"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "guardduty:*",
+            "Resource": [
+                "arn:aws:guardduty:REGION_HERE:ACCOUNT_NUMBER_HERE:detector/*/threatintelset/*",
+                "arn:aws:guardduty:REGION_HERE:ACCOUNT_NUMBER_HERE:detector/*/ipset/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": "guardduty:*",
+            "Resource": "arn:aws:guardduty:REGION_HERE:ACCOUNT_NUMBER_HERE:detector/*"
+        }
+    ]
+}

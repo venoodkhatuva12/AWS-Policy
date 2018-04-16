@@ -1,0 +1,19 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "kinesisvideo:ListStreams",
+                "kinesisvideo:DescribeStream",
+                "kinesisvideo:CreateStream"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "kinesisvideo:*",
+            "Resource": "arn:aws:kinesisvideo:REGION_HERE:ACCOUNT_NUMBER_HERE:stream/COMPONENT_NAME_HERE* /*"
+        }
+    ]
+}

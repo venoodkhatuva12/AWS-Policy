@@ -1,0 +1,41 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "rekognition:CreateStreamProcessor",
+                "rekognition:Delete*",
+                "rekognition:List*",
+                "rekognition:StartFaceSearch",
+                "rekognition:IndexFaces",
+                "rekognition:DescribeStreamProcessor",
+                "rekognition:CreateCollection",
+                "rekognition:SearchFaces",
+                "rekognition:StartStreamProcessor",
+                "rekognition:SearchFacesByImage",
+                "rekognition:StopStreamProcessor"
+            ],
+            "Resource": [
+                "arn:aws:rekognition:REGION_HERE:ACCOUNT_NUMBER_HERE:streamprocessor/*",
+                "arn:aws:rekognition:REGION_HERE:ACCOUNT_NUMBER_HERE:collection/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "rekognition:DetectLabels",
+                "rekognition:Get*",
+                "rekognition:Start*",
+                "rekognition:DetectFaces",
+                "rekognition:DetectModerationLabels",
+                "rekognition:RecognizeCelebrities",
+                "rekognition:StartLabelDetection",
+                "rekognition:CompareFaces",
+                "rekognition:DetectText"
+             
+            ],
+            "Resource": "*"
+        }
+    ]
+}

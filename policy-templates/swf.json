@@ -1,0 +1,18 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "swf:RegisterDomain",
+                "swf:ListDomains"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "swf:*",
+            "Resource": "arn:aws:swf::ACCOUNT_NUMBER_HERE:domain/COMPONENT_NAME_HERE*"
+        }
+    ]
+}

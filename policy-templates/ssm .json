@@ -1,0 +1,43 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ssm:CancelCommand",
+                "ssm:List*",
+                "ssm:UpdateDocumentDefaultVersion",
+                "ssm:SendAutomationSignal",
+                "ssm:Describe*",
+                "ssm:Create*",
+                "ssm:UpdateAssociation",
+                "ssm:Get*",
+                "ssm:DeleteActivation",
+                "ssm:StartAssociationsOnce",
+                "ssm:UpdateDocument",
+                "ssm:PutComplianceItems",
+                "ssm:StartAutomationExecution",
+                "ssm:PutConfigurePackageResult",
+                "ssm:DeleteResourceDataSync",
+                "ssm:StopAutomationExecution",
+                "ssm:PutInventory",
+                "ssm:UpdateInstanceAssociationStatus"
+            ],
+            "Resource": "*"
+        },
+        {
+          
+            "Effect": "Allow",
+            "Action": "ssm:*",
+            "Resource": [
+                "arn:aws:ssm:REGION_HERE:ACCOUNT_NUMBER_HERE:windowtask/*",
+                "arn:aws:ssm:REGION_HERE:ACCOUNT_NUMBER_HERE:parameter/COMPONENT_NAME_HERE*",
+                "arn:aws:ssm:REGION_HERE:ACCOUNT_NUMBER_HERE:patchbaseline/COMPONENT_NAME_HERE*",
+                "arn:aws:ssm:REGION_HERE:ACCOUNT_NUMBER_HERE:maintenancewindow/*",
+                "arn:aws:ssm:REGION_HERE:ACCOUNT_NUMBER_HERE:managed-instance/COMPONENT_NAME_HERE*",
+                "arn:aws:ssm:REGION_HERE:ACCOUNT_NUMBER_HERE:windowtarget/*",
+                "arn:aws:ssm:REGION_HERE:ACCOUNT_NUMBER_HERE:document/COMPONENT_NAME_HERE*"
+            ]
+        }
+    ]
+}

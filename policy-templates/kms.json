@@ -1,0 +1,26 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "kms:ListKeys",
+                "kms:GenerateRandom",
+                "kms:ListAliases",
+                "kms:GenerateDataKey",
+                "kms:ReEncryptTo",
+                "kms:CreateKey",
+                "kms:ReEncryptFrom"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "kms:*",
+            "Resource": [
+                "arn:aws:kms:REGION_HERE:ACCOUNT_NUMBER_HERE:alias/*",
+                "arn:aws:kms:REGION_HERE:ACCOUNT_NUMBER_HERE:key/*"
+            ]
+        }
+    ]
+}

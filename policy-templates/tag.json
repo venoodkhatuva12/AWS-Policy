@@ -1,0 +1,16 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "tag:GetResources",
+                "tag:UntagResources",
+                "tag:GetTagValues",
+                "tag:GetTagKeys",
+                "tag:TagResources"
+            ],
+            "Resource": "*"
+        }
+    ]
+}

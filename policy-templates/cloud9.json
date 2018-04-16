@@ -1,0 +1,37 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [{
+			"Effect": "Allow",
+			"Action": [
+				"cloud9:Create*",
+				"cloud9:DeleteEnvironmentMembership",
+				"cloud9:ListEnvironments",
+				"cloud9:GetUserPublicKey",
+				"cloud9:UpdateEnvironmentMembership",
+				"cloud9:DescribeEnvironmentStatus",
+				"cloud9:DescribeEnvironmentMemberships",
+				"cloud9:ValidateEnvironmentName"
+
+			],
+			"Resource": "*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": "cloud9:*",
+			"Resource": "arn:aws:cloud9:REGION_HERE: ACCOUNT_NUMBER_HERE:environment:*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": "iam:CreateServiceLinkedRole",
+			"Resource": "arn:aws:iam::ACCOUNT_NUMBER_HERE:role/COMPONENT_NAME_HERE"
+		},
+		{
+			"Effect": "Allow",
+			"Action": [
+				"ec2:Describe*"
+
+			],
+			"Resource": "*"
+		}
+	]
+}

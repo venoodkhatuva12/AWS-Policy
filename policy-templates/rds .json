@@ -1,0 +1,36 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "rds:Describe*",
+                "rds:DownloadCompleteDBLogFile",
+                "rds:PurchaseReservedDBInstancesOffering"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "rds:*",
+            "Resource": "arn:aws:rds:REGION_HERE:ACCOUNT_NUMBER_HERE:cluster-snapshot:COMPONENT_NAME_HERE* "
+        },
+        {
+            "Effect": "Allow",
+            "Action": "rds:*",
+            "Resource": [
+                "arn:aws:rds:REGION_HERE:ACCOUNT_NUMBER_HERE:cluster:COMPONENT_NAME_HERE* ",
+                "arn:aws:rds:REGION_HERE:ACCOUNT_NUMBER_HERE:es:COMPONENT_NAME_HERE* ",
+                "arn:aws:rds:REGION_HERE:ACCOUNT_NUMBER_HERE:cluster-snapshot:COMPONENT_NAME_HERE* ",
+                "arn:aws:iam::ACCOUNT_NUMBER_HERE:role/*",
+                "arn:aws:rds:REGION_HERE:ACCOUNT_NUMBER_HERE:subgrp:COMPONENT_NAME_HERE* ",
+                "arn:aws:rds:REGION_HERE:ACCOUNT_NUMBER_HERE:secgrp:COMPONENT_NAME_HERE* ",
+                "arn:aws:rds:REGION_HERE:ACCOUNT_NUMBER_HERE:pg:COMPONENT_NAME_HERE* ",
+                "arn:aws:rds:REGION_HERE:ACCOUNT_NUMBER_HERE:og:COMPONENT_NAME_HERE* ",
+                "arn:aws:rds:REGION_HERE:ACCOUNT_NUMBER_HERE:snapshot:COMPONENT_NAME_HERE* ",
+                "arn:aws:rds:REGION_HERE:ACCOUNT_NUMBER_HERE:db:COMPONENT_NAME_HERE* ",
+                "arn:aws:rds:REGION_HERE:ACCOUNT_NUMBER_HERE:ri:COMPONENT_NAME_HERE* "
+            ]
+        }
+    ]
+}

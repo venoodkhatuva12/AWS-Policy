@@ -1,0 +1,71 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [{
+			"Effect": "Allow",
+			"Action": [
+				"dax:GetItem",
+				"dax:ListTables",
+				"dax:PutItem",
+				"dax:BatchGetItem",
+				"dax:BatchWriteItem",
+				"dax:DeleteItem",
+				"dax:Query",
+				"dax:DescribeTable",
+				"dax:Scan",
+				"dax:UpdateItem"
+			],
+			"Resource": "arn:aws:dax:REGION_HERE:ACCOUNT_NUMBER_HERE:cache/COMPONENT_NAME_HERE*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": [
+				"dax:Describe*",
+				"dax:CreateSubnetGroup",
+				"dax:UntagResource",
+				"dax:UpdateSubnetGroup",
+				"dax:CreateCluster",
+				"dax:Delete*",
+				"dax:DecreaseReplicationFactor",
+				"dax:IncreaseReplicationFactor",
+				"dax:UpdateParameterGroup",
+				"dax:RebootNode",
+				"dax:UpdateCluster",
+				"dax:CreateParameterGroup",
+				"dax:ListTags",
+				"dax:TagResource"
+			],
+			"Resource": "*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": "dynamodb:DescribeTable",
+			"Resource": "arn:aws:dynamodb:REGION_HERE:ACCOUNT_NUMBER_HERE:table/COMPONENT_NAME_HERE "
+		},
+		{
+			"Effect": "Allow",
+			"Action": [
+				"dax:CreateSubnetGroup",
+				"dax:CreateParameterGroup"
+			],
+			"Resource": "*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": [
+				"ec2:CreateNetworkInterface",
+				"ec2:Describe*",
+				"ec2:DeleteNetworkInterface"
+
+			],
+			"Resource": "*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": [
+				"iam:GetRole",
+				"iam:PassRole"
+			],
+			"Resource": "arn:aws:iam::ACCOUNT_NUMBER_HERE:role/COMPONENT_NAME_HERE "
+		}
+	]
+}

@@ -1,0 +1,21 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "elasticloadbalancing:Describe*"
+               
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "elasticloadbalancing:*",
+            "Resource": [
+                "arn:aws:elasticloadbalancing:REGION_HERE:ACCOUNT_NUMBER_HERE:loadbalancer/COMPONENT_NAME_HERE*",
+                "arn:aws:elasticloadbalancing:REGION_HERE:ACCOUNT_NUMBER_HERE:loadbalancer/app/COMPONENT_NAME_HERE*/*"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "cognito-idp:*",
+            "Resource": "arn:aws:cognito-idp:REGION_HERE:ACCOUNT_NUMBER_HERE:userpool/*"
+        }
+    ]
+}

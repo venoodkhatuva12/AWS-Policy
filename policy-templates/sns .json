@@ -1,0 +1,29 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "sns:CreatePlatformApplication",
+                "sns:SetSMSAttributes",
+                "sns:List*",
+                "sns:Get*",
+                "sns:CreatePlatformEndpoint",
+                "sns:Unsubscribe",
+                "sns:CheckIfPhoneNumberIsOptedOut",
+                "sns:OptInPhoneNumber",
+                "sns:DeleteEndpoint",
+                "sns:SetEndpointAttributes",
+                "sns:SetSubscriptionAttributes",
+                "sns:DeletePlatformApplication",
+                "sns:SetPlatformApplicationAttributes"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "sns:*",
+            "Resource": "arn:aws:sns:REGION_HERE:ACCOUNT_NUMBER_HERE:COMPONENT_NAME_HERE*"
+        }
+    ]
+}

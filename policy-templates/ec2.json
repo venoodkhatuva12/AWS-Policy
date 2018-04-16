@@ -1,0 +1,146 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [{
+			"Effect": "Allow",
+			"Action": [
+				"ec2:Replace*",
+				"ec2:Delete*",
+				"ec2:ResetInstanceAttribute",
+				"ec2:AttachInternetGateway",
+				"ec2:ReportInstanceStatus",
+				"ec2:Describe*",
+				"ec2:Modify*",
+				"ec2:Create*",
+				"ec2:UnassignPrivateIpAddresses",
+				"ec2:CancelExportTask",
+				"ec2:ImportKeyPair",
+				"ec2:CancelSpotInstanceRequests",
+				"ec2:ImportVolume",
+				"ec2:MoveAddressToVpc",
+				"ec2:RunScheduledInstances",
+				"ec2:RequestSpotFleet",
+				"ec2:ReleaseHosts",
+				"ec2:ModifySubnetAttribute",
+				"ec2:ModifyReservedInstances",
+				"ec2:ReleaseAddress",
+				"ec2:AssociateDhcpOptions",
+				"ec2:AttachVpnGateway",
+				"ec2:ResetSnapshotAttribute",
+				"ec2:RestoreAddressToClassic",
+				"ec2:EnableVgwRoutePropagation",
+				"ec2:ConfirmProductInstance",
+				"ec2:PurchaseHostReservation",
+				"ec2:GetHostReservationPurchasePreview",
+				"ec2:CopyImage",
+				"ec2:AssociateVpcCidrBlock",
+				"ec2:DisassociateVpcCidrBlock",
+				"ec2:ImportImage",
+				"ec2:RejectVpcEndpointConnections",
+				"ec2:ResetImageAttribute",
+				"ec2:AssociateAddress",
+				"ec2:CancelBundleTask",
+				"ec2:DeregisterImage",
+				"ec2:PurchaseReservedInstancesOffering",
+				"ec2:RequestSpotInstances",
+				"ec2:CancelSpotFleetRequests",
+				"ec2:CopyFpgaImage",
+				"ec2:AcceptReservedInstancesExchangeQuote",
+				"ec2:EnableVpcClassicLinkDnsSupport",
+				"ec2:CancelReservedInstancesListing",
+				"ec2:BundleInstance",
+				"ec2:AssignPrivateIpAddresses",
+				"ec2:DisassociateRouteTable",
+				"ec2:DetachVpnGateway",
+				"ec2:GetPasswordData",
+				"ec2:DisassociateAddress",
+				"ec2:AssignIpv6Addresses",
+				"ec2:ImportInstance",
+				"ec2:AcceptVpcEndpointConnections",
+				"ec2:CancelConversionTask",
+				"ec2:ImportSnapshot",
+				"ec2:DisassociateSubnetCidrBlock",
+				"ec2:DisableVpcClassicLinkDnsSupport",
+				"ec2:AllocateHosts",
+				"ec2:CancelImportTask",
+				"ec2:CopySnapshot",
+				"ec2:ModifyVpcEndpointServiceConfiguration",
+				"ec2:UnmonitorInstances",
+				"ec2:MonitorInstances",
+				"ec2:DisableVgwRoutePropagation",
+				"ec2:AssociateRouteTable",
+				"ec2:GetLaunchTemplateData",
+				"ec2:UnassignIpv6Addresses",
+				"ec2:PurchaseScheduledInstances",
+				"ec2:ModifyVolume",
+				"ec2:ResetNetworkInterfaceAttribute",
+				"ec2:RegisterImage",
+				"ec2:DetachInternetGateway",
+				"ec2:ModifyVpcEndpointConnectionNotification",
+				"ec2:GetReservedInstancesExchangeQuote",
+				"ec2:EnableVolumeIO",
+				"ec2:CreateFlowLogs",
+				"ec2:AssociateSubnetCidrBlock",
+				"ec2:GetConsoleOutput",
+				"ec2:ModifyVpcAttribute",
+				"ec2:DetachNetworkInterface",
+				"ec2:AllocateAddress",
+				"ec2:ModifyInstanceCreditSpecification",
+				"ec2:AttachNetworkInterface",
+				"ec2:ResetFpgaImageAttribute"
+			],
+			"Resource": "*",
+			"Condition": {
+				"ForAnyValue:StringEqualsIfExists": {
+					"aws:TagKeys": "component"
+				}
+			}
+		},
+		{
+			"Effect": "Allow",
+			"Action": "ec2:*",
+			"Resource": [
+				"arn:aws:ec2:REGION_HERE:ACCOUNT_NUMBER_HERE:dhcp-options/*",
+				"arn:aws:ec2:REGION_HERE:ACCOUNT_NUMBER_HERE:placement-group/COMPONENT_NAME_HERE*",
+				"arn:aws:ec2:REGION_HERE:ACCOUNT_NUMBER_HERE:vpn-gateway/*",
+				"arn:aws:ec2:REGION_HERE::fpga-image/*",
+				"arn:aws:ec2:REGION_HERE::spot-instance-request/*",
+				"arn:aws:ec2:REGION_HERE:ACCOUNT_NUMBER_HERE:vpc/*",
+				"arn:aws:ec2:REGION_HERE:ACCOUNT_NUMBER_HERE:vpn-connection/*",
+				"arn:aws:ec2:REGION_HERE:ACCOUNT_NUMBER_HERE:vpc-peering-connection/*",
+				"arn:aws:ec2:REGION_HERE:ACCOUNT_NUMBER_HERE:internet-gateway/*",
+				"arn:aws:ec2:REGION_HERE:ACCOUNT_NUMBER_HERE:reserved-instances/*",
+				"arn:aws:ec2:REGION_HERE::image/*",
+				"arn:aws:ec2:REGION_HERE:ACCOUNT_NUMBER_HERE:security-group/*",
+				"arn:aws:ec2:REGION_HERE:ACCOUNT_NUMBER_HERE:instance/*",
+				"arn:aws:ec2:REGION_HERE:ACCOUNT_NUMBER_HERE:customer-gateway/*",
+				"arn:aws:ec2:REGION_HERE:ACCOUNT_NUMBER_HERE:subnet/*",
+				"arn:aws:ec2:REGION_HERE:ACCOUNT_NUMBER_HERE:volume/*",
+				"arn:aws:ec2:REGION_HERE:ACCOUNT_NUMBER_HERE:network-interface/*",
+				"arn:aws:ec2:REGION_HERE::snapshot/*",
+				"arn:aws:ec2:REGION_HERE:ACCOUNT_NUMBER_HERE:route-table/*"
+			],
+			"Condition": {
+				"ForAnyValue:StringEqualsIfExists": {
+					"aws:TagKeys": "component"
+				}
+			}
+		},
+
+		{
+			"Effect": "Allow",
+			"Action": "iam:PassRole",
+			"Resource": "arn:aws:iam::ACCOUNT_NUMBER_HERE :role/COMPONENT_NAME_HERE "
+		},
+		{
+			
+			"Effect": "Allow",
+			"Action": "route53:AssociateVPCWithHostedZone",
+			"Resource": [
+				"arn:aws:route53:::hostedzone/*",
+				"arn:aws:route53:::healthcheck/*",
+				"arn:aws:route53:::change/*",
+				"arn:aws:route53:::delegationset/*"
+			]
+		}
+	]
+}

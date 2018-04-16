@@ -1,0 +1,21 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "sts:DecodeAuthorizationMessage",
+                "sts:GetCallerIdentity"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "sts:*",
+            "Resource": [
+                "arn:aws:iam::ACCOUNT_NUMBER_HERE:role/COMPONENT_NAME_HERE*",
+                "arn:aws:iam::ACCOUNT_NUMBER_HERE:user/COMPONENT_NAME_HERE*"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "lightsail:Get*",
+                "lightsail:PeerVpc",
+                "lightsail:IsVpcPeered",
+                "lightsail:UnpeerVpc"
+           
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": "lightsail:*",
+            "Resource": [
+                "arn:aws:lightsail:REGION_HERE:ACCOUNT_NUMBER_HERE:InstanceSnapshot/*",
+                "arn:aws:lightsail:REGION_HERE:ACCOUNT_NUMBER_HERE:KeyPair/*",
+                "arn:aws:lightsail:REGION_HERE:ACCOUNT_NUMBER_HERE:StaticIp/*",
+                "arn:aws:lightsail:REGION_HERE:ACCOUNT_NUMBER_HERE:Instance/*",
+                "arn:aws:lightsail:REGION_HERE:ACCOUNT_NUMBER_HERE:Domain/*"
+            ]
+        }
+    ]
+}

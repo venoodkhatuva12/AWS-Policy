@@ -1,0 +1,18 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "health:DescribeEventTypes",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "health:*",
+            "Resource": [
+                "arn:aws:health:REGION_HERE::entity/*",
+                "arn:aws:health:REGION_HERE::event/*"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "lex:Get*",
+                "lex:PostText",
+                "lex:PostContent"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": "lex:*",
+            "Resource": [
+                "arn:aws:lex:REGION_HERE:ACCOUNT_NUMBER_HERE:bot:COMPONENT_NAME_HERE*:*",
+                "arn:aws:lex:REGION_HERE:ACCOUNT_NUMBER_HERE:bot-channel:COMPONENT_NAME_HERE*:*:*",
+                "arn:aws:lex:REGION_HERE:ACCOUNT_NUMBER_HERE:intent:COMPONENT_NAME_HERE* :*",
+                "arn:aws:lex:REGION_HERE:ACCOUNT_NUMBER_HERE:slottype:COMPONENT_NAME_HERE*:"
+            ]
+        }
+    ]
+}

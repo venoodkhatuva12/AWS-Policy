@@ -1,0 +1,19 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "cloudsearch:document",
+                "cloudsearch:search",
+                "cloudsearch:suggest"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "cloudsearch:*",
+            "Resource": "arn:aws:cloudsearch:REGION_HERE:ACCOUNT_NUMBER_HERE:domain/COMPONENT_NAME_HERE*"
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "es:ESH*",
+                "es:ListDomainNames",
+                "es:CreateElasticsearchDomain"
+             
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "es:*",
+            "Resource": "arn:aws:es:REGION_HERE:ACCOUNT_NUMBER_HERE:domain/COMPONENT_NAME_HERE*"
+        }
+    ]
+}

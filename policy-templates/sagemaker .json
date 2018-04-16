@@ -1,0 +1,24 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "sagemaker:List*",
+               
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "sagemaker:*",
+            "Resource": [
+                "arn:aws:sagemaker:REGION_HERE:ACCOUNT_NUMBER_HERE:endpoint-config/COMPONENT_NAME_HERE* ",
+                "arn:aws:sagemaker:REGION_HERE:ACCOUNT_NUMBER_HERE:endpoint/COMPONENT_NAME_HERE* ",
+                "arn:aws:sagemaker:REGION_HERE:ACCOUNT_NUMBER_HERE:training-job/COMPONENT_NAME_HERE* ",
+                "arn:aws:sagemaker:REGION_HERE:ACCOUNT_NUMBER_HERE:model/COMPONENT_NAME_HERE* ",
+                "arn:aws:sagemaker:REGION_HERE:ACCOUNT_NUMBER_HERE:notebook-instance/COMPONENT_NAME_HERE* "
+            ]
+        }
+    ]
+}

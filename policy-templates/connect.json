@@ -1,0 +1,69 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [{
+			"Effect": "Allow",
+			"Action": [
+				"connect:CreateInstance",
+				"connect:ListInstances"
+			],
+			"Resource": "*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": "connect:*",
+			"Resource": "arn:aws:connect::ACCOUNT_NUMBER_HERE:instance/*"
+		},
+
+		{
+			"Effect": "Allow",
+			"Action": [
+				"firehose:DescribeDeliveryStream",
+				"firehose:ListDeliveryStreams"
+			],
+			"Resource": "*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": "kinesis:DescribeStream",
+			"Resource": "arn:aws:kinesis:REGION_HERE :ACCOUNT_NUMBER_HERE:stream/COMPONENT_NAME_HERE"
+		},
+		{
+			"Effect": "Allow",
+			"Action": "kinesis:ListStreams",
+			"Resource": "*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": [
+				"kms:DescribeKey",
+				"kms:CreateGrant",
+				"kms:RetireGrant"
+			],
+			"Resource": "arn:aws:kms:REGION_HERE:ACCOUNT_NUMBER_HERE :key/*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": "kms:ListAliases",
+			"Resource": "*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": "s3:CreateBucket",
+			"Resource": "arn:aws:s3:::COMPONENT_NAME_HERE"
+		},
+		{
+			"Effect": "Allow",
+			"Action": "s3:ListAllMyBuckets",
+			"Resource": "*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": [
+				"ds:DescribeDirectories",
+				"ds:CreateAlias",
+				"ds:DeleteDirectory"
+			],
+			"Resource": "*"
+		}
+	]
+}

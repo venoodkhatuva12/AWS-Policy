@@ -1,0 +1,24 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "elastictranscoder:TestRole",
+                "elastictranscoder:ListPipelines",
+                "elastictranscoder:ListJobsByStatus",
+                "elastictranscoder:ListPresets"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "elastictranscoder:*",
+            "Resource": [
+                "arn:aws:elastictranscoder:REGION_HERE:ACCOUNT_NUMBER_HERE:preset/*",
+                "arn:aws:elastictranscoder:REGION_HERE:ACCOUNT_NUMBER_HERE:job/*",
+                "arn:aws:elastictranscoder:REGION_HERE:ACCOUNT_NUMBER_HERE:pipeline/*"
+            ]
+        }
+    ]
+}

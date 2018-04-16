@@ -1,0 +1,18 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [{
+			"Effect": "Allow",
+			"Action": [
+				"codebuild:List*",
+				"codebuild:PersistOAuthToken"
+
+			],
+			"Resource": "*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": "codebuild:*",
+			"Resource": "arn:aws:codebuild:REGION_HERE:ACCOUNT_NUMBER_HERE:project/COMPONENT_NAME_HERE*"
+		}
+	]
+}

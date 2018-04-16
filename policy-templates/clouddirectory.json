@@ -1,0 +1,27 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "clouddirectory:List*",
+                "clouddirectory:PutSchemaFromJson",
+                "clouddirectory:CreateSchema"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "clouddirectory:*",
+            "Resource": [
+                "arn:aws:clouddirectory:REGION_HERE:ACCOUNT_NUMBER_HERE:directory/*/schema/COMPONENT_NAME_HERE*/*",
+                "arn:aws:clouddirectory:REGION_HERE:ACCOUNT_NUMBER_HERE:schema/development/COMPONENT_NAME_HERE*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": "clouddirectory:*",
+            "Resource": "arn:aws:clouddirectory:REGION_HERE:ACCOUNT_NUMBER_HERE:directory/*"
+        }
+    ]
+}

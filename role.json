@@ -1,0 +1,37 @@
+{
+  "AssumeRolePolicyDocument": {
+    "Statement": [
+      {
+        "Action": "sts:AssumeRole",
+        "Effect": "Allow",
+        "Principal": {
+          "AWS": "arn:aws:iam::602632823975:root"
+        },
+        "Sid": ""
+      }
+    ],
+    "Version": "2012-10-17"
+  },
+  "AttachedPolicies": [
+    {
+      "PolicyArn": "arn:aws:iam::ACCOUNT_NUMBER_HERE:policy/base-policies/global-accounting-denies",
+      "PolicyName": "global-accounting-denies"
+    },
+    {
+   "PolicyArn": "arn:aws:iam::ACCOUNT_NUMBER_HERE:policy/base-policies/global-network-denies",
+   "PolicyName": "global-network-denies"
+    }, 
+    {
+      "PolicyArn": "arn:aws:iam::ACCOUNT_NUMBER_HERE:policy/base-policies/global-read-only-metadata-only",
+      "PolicyName": "global-read-only-metadata-only"
+    },
+    {
+      "PolicyArn": "arn:aws:iam::ACCOUNT_NUMBER_HERE:policy/base-policies/global-policy-denies",
+      "PolicyName": "global-policy-denies"
+    },
+    {
+      "PolicyArn": "arn:aws:iam::ACCOUNT_NUMBER_HERE:policy/human-policies/ADFS-AD_GROUP",
+      "PolicyName": "ADFS-AD_GROUP"
+    }
+  ]
+}

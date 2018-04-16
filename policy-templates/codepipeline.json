@@ -1,0 +1,35 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "codepipeline:Put*",
+                "codepipeline:PollForThirdPartyJobs",
+                "codepipeline:AcknowledgeJob",
+                "codepipeline:AcknowledgeThirdPartyJob",
+                "codepipeline:Get*"
+        
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "codepipeline:*",
+            "Resource": [
+                "arn:aws:codepipeline:REGION_HERE:ACCOUNT_NUMBER_HERE:COMPONENT_NAME_HERE*",
+                "arn:aws:codepipeline:REGION_HERE:ACCOUNT_NUMBER_HERE:actiontype:COMPONENT_NAME_HERE*/COMPONENT_NAME_HERE*/COMPONENT_NAME_HERE*/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": "codepipeline:*",
+            "Resource": "arn:aws:codepipeline:REGION_HERE:ACCOUNT_NUMBER_HERE:COMPONENT_NAME_HERE*/COMPONENT_NAME_HERE*/COMPONENT_NAME_HERE*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "codepipeline:*",
+            "Resource": "arn:aws:codepipeline:REGION_HERE:ACCOUNT_NUMBER_HERE:COMPONENT_NAME_HERE*/COMPONENT_NAME_HERE*"
+        }
+    ]
+}

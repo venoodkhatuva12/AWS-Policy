@@ -1,0 +1,25 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "cognito-sync:QueryRecords",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "cognito-sync:*",
+            "Resource": "arn:aws:cognito-sync:REGION_HERE:ACCOUNT_NUMBER_HERE:identitypool/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "cognito-sync:*",
+            "Resource": "arn:aws:cognito-sync:REGION_HERE:ACCOUNT_NUMBER_HERE:identitypool/*/identity/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "cognito-sync:*",
+            "Resource": "arn:aws:cognito-sync:REGION_HERE:ACCOUNT_NUMBER_HERE:identitypool/*/identity/*/dataset/COMPONENT_NAME_HERE*"
+        }
+    ]
+}

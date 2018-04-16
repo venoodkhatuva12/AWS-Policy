@@ -1,0 +1,58 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:ListOTAUpdateJobs",
+                "iot:SetLoggingOptions",
+                "iot:Describe*",
+                "iot:UpdateIndexingConfiguration",
+                "iot:List*",
+                "iot:Delete*",
+                "iot:CreateCertificateFromCsr",
+                "iot:GetTopicRule",
+                "iot:DisableTopicRule",
+                "iot:RegisterCertificate",
+                "iot:GetIndexingConfiguration",
+                "iot:CancelCertificateTransfer",
+                "iot:AcceptCertificateTransfer",
+                "iot:Create*",
+                "iot:EnableTopicRule",
+                "iot:ReplaceTopicRule",
+                "iot:GetOTAUpdateJob",
+                "iot:AttachThingPrincipal",
+                "iot:GetRegistrationCode",
+                "iot:UpdateStream",
+                "iot:CreateKeysAndCertificate",
+                "iot:DeprecateThingType",
+                "iot:DetachThingPrincipal",
+                "iot:RegisterCACertificate",
+                "iot:ClearDefaultAuthorizer",
+                "iot:GetLoggingOptions",
+                "iot:UpdateThing"
+
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iot:*",
+            "Resource": [
+                "arn:aws:iam::ACCOUNT_NUMBER_HERE:role/*",
+                "arn:aws:iot:REGION_HERE:ACCOUNT_NUMBER_HERE:policy/COMPONENT_NAME_HERE* ",
+                "arn:aws:iot:REGION_HERE:ACCOUNT_NUMBER_HERE:client/*",
+                "arn:aws:iot:REGION_HERE:ACCOUNT_NUMBER_HERE:cert/*",
+                "arn:aws:iot:REGION_HERE:ACCOUNT_NUMBER_HERE:topicfilter/*",
+                "arn:aws:iot:REGION_HERE:ACCOUNT_NUMBER_HERE:cacert/*",
+                "arn:aws:iot:REGION_HERE:ACCOUNT_NUMBER_HERE:job/*",
+                "arn:aws:iot:REGION_HERE:ACCOUNT_NUMBER_HERE:thing/COMPONENT_NAME_HERE* ",
+                "arn:aws:iot:REGION_HERE:ACCOUNT_NUMBER_HERE:thinggroup/COMPONENT_NAME_HERE*",
+                "arn:aws:iot:REGION_HERE:ACCOUNT_NUMBER_HERE:index/COMPONENT_NAME_HERE* ",
+                "arn:aws:iot:REGION_HERE:ACCOUNT_NUMBER_HERE:topic/COMPONENT_NAME_HERE*",
+                "arn:aws:iot:REGION_HERE:ACCOUNT_NUMBER_HERE:authorizer/COMPONENT_NAME_HERE*",
+                "arn:aws:iot:REGION_HERE:ACCOUNT_NUMBER_HERE:rolealias/*"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "machinelearning:Describe*"
+              
+            ],
+            "Resource": "*"
+        },
+        {
+           
+            "Effect": "Allow",
+            "Action": "machinelearning:*",
+            "Resource": [
+                "arn:aws:machinelearning:REGION_HERE:ACCOUNT_NUMBER_HERE:batchprediction/*",
+                "arn:aws:machinelearning:REGION_HERE:ACCOUNT_NUMBER_HERE:mlmodel/*",
+                "arn:aws:machinelearning:REGION_HERE:ACCOUNT_NUMBER_HERE:datasource/*",
+                "arn:aws:machinelearning:REGION_HERE:ACCOUNT_NUMBER_HERE:evaluation/*"
+            ]
+        }
+    ]
+}

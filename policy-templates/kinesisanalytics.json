@@ -1,0 +1,19 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "kinesisanalytics:DiscoverInputSchema",
+                "kinesisanalytics:CreateApplication",
+                "kinesisanalytics:ListApplications"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "kinesisanalytics:*",
+            "Resource": "arn:aws:kinesisanalytics:REGION_HERE:ACCOUNT_NUMBER_HERE:application/COMPONENT_NAME_HERE*"
+        }
+    ]
+}

@@ -1,0 +1,58 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:GetShardIterator",
+                "dynamodb:RestoreTableFromBackup",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:Describe*",
+                "dynamodb:DeleteBackup",
+                "dynamodb:GetRecords"
+            ],
+            "Resource": [
+                "arn:aws:dynamodb:REGION_NAME:ACCOUNT_NUMBER_HERE:table/COMPONENT_NAME_HERE/backup/COMPONENT_NAME_HERE*",
+                "arn:aws:dynamodb:REGION_HERE:ACCOUNT_NUMBER_HERE:table/COMPONENT_NAME_HERE*/stream/COMPONENT_NAME_HERE*",
+                "arn:aws:dynamodb:REGION_HERE:ACCOUNT_NUMBER_HERE:table/COMPONENT_NAME_HERE*/index/COMPONENT_NAME_HERE*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:BatchGetItem",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:UpdateTimeToLive",
+                "dynamodb:PutItem",
+                "dynamodb:Delete*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:UpdateItem",
+                "dynamodb:CreateBackup",
+                "dynamodb:CreateTable",
+                "dynamodb:DescribeTable",
+                "dynamodb:RestoreTableFromBackup",
+                "dynamodb:GetItem",
+                "dynamodb:DescribeContinuousBackups",
+                "dynamodb:UpdateTable"
+            ],
+            "Resource": "arn:aws:dynamodb:REGION_HERE:ACCOUNT_NUMBER_HERE:table/COMPONENT_NAME_HERE*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:DescribeReservedCapacityOfferings",
+                "dynamodb:TagResource",
+                "dynamodb:UntagResource",
+                "dynamodb:List*",
+                "dynamodb:DescribeReservedCapacity",
+                "dynamodb:PurchaseReservedCapacityOfferings", 
+                "dynamodb:DescribeTimeToLive",
+                "dynamodb:DescribeLimits"
+                
+            ],
+            "Resource": "*"
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "storagegateway:CreateTapeWithBarcode",
+                "storagegateway:DeleteTapeArchive",
+                "storagegateway:ListGateways",
+                "storagegateway:DescribeTapeArchives",
+                "storagegateway:ActivateGateway"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "storagegateway:*",
+            "Resource": [
+                "arn:aws:storagegateway:REGION_HERE:ACCOUNT_NUMBER_HERE:share/*",
+                "arn:aws:storagegateway:REGION_HERE:ACCOUNT_NUMBER_HERE:gateway/*/device/*",
+                "arn:aws:storagegateway:REGION_HERE:ACCOUNT_NUMBER_HERE:gateway/*/volume/*",
+                "arn:aws:storagegateway:REGION_HERE:ACCOUNT_NUMBER_HERE:gateway/*/target/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": "storagegateway:*",
+            "Resource": "arn:aws:storagegateway:REGION_HERE:ACCOUNT_NUMBER_HERE:gateway/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "storagegateway:*",
+            "Resource": "arn:aws:storagegateway:REGION_HERE:ACCOUNT_NUMBER_HERE:gateway/*"
+        }
+    ]
+}

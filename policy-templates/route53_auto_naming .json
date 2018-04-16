@@ -1,0 +1,22 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "servicediscovery:List*",
+                "servicediscovery:Get*"
+               
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "servicediscovery:*",
+            "Resource": [
+                "arn:aws:servicediscovery:REGION_HERE:ACCOUNT_NUMBER_HERE:service/COMPONENT_NAME_HERE* ",
+                "arn:aws:servicediscovery:REGION_HERE:ACCOUNT_NUMBER_HERE:stack/COMPONENT_NAME_HERE* "
+            ]
+        }
+    ]
+}

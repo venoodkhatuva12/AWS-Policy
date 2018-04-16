@@ -1,0 +1,26 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "cloudtrail:LookupEvents",
+                "cloudtrail:PutEventSelectors",
+                "cloudtrail:ListPublicKeys",
+                "cloudtrail:GetEventSelectors",
+                "cloudtrail:DescribeTrails"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "cloudtrail:*",
+            "Resource": "arn:aws:cloudtrail:REGION_HERE:ACCOUNT_NUMBER_HERE:trail/COMPONENT_NAME_HERE*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "s3:PutObject",
+            "Resource": "arn:aws:s3:::COMPONENT_NAME_HERE/*"
+        }
+    ]
+}

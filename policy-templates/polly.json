@@ -1,0 +1,18 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "polly:ListLexicons",
+                "polly:DescribeVoices"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "polly:*",
+            "Resource": "arn:aws:polly:REGION_HERE:ACCOUNT_NUMBER_HERE:lexicon/COMPONENT_NAME_HERE* "
+        }
+    ]
+}

@@ -1,0 +1,37 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "redshift:Describe*",
+                "redshift:DeleteTags",
+                "redshift:PurchaseReservedNodeOffering",
+                "redshift:CreateTags",
+                "redshift:ViewQueriesInConsole",
+                "redshift:CancelQuerySession"
+               
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "redshift:*",
+            "Resource": [
+                "arn:aws:redshift:REGION_HERE:ACCOUNT_NUMBER_HERE:hsmconfiguration:*",
+                "arn:aws:redshift:REGION_HERE:ACCOUNT_NUMBER_HERE:securitygroupingress:COMPONENT_NAME_HERE* /ec2securitygroup/*/*",
+                "arn:aws:redshift:REGION_HERE:ACCOUNT_NUMBER_HERE:cluster:REGION_HERE ACCOUNT_NUMBER_HERE COMPONENT_NAME_HERE* ",
+                "arn:aws:redshift:REGION_HERE:ACCOUNT_NUMBER_HERE:COMPONENT_NAME_HERE* /*",
+                "arn:aws:redshift:REGION_HERE:ACCOUNT_NUMBER_HERE:securitygroup:COMPONENT_NAME_HERE* /ec2securitygroup/*/*",
+                "arn:aws:redshift:REGION_HERE:ACCOUNT_NUMBER_HERE:dbuser:COMPONENT_NAME_HERE* /*",
+                "arn:aws:redshift:REGION_HERE:ACCOUNT_NUMBER_HERE:parametergroup:COMPONENT_NAME_HERE* ",
+                "arn:aws:redshift:REGION_HERE:ACCOUNT_NUMBER_HERE:dbname:COMPONENT_NAME_HERE* COMPONENT_NAME_HERE* /COMPONENT_NAME_HERE* ",
+                "arn:aws:redshift:REGION_HERE:ACCOUNT_NUMBER_HERE:dbgroup:COMPONENT_NAME_HERE* /*",
+                "arn:aws:redshift:REGION_HERE:ACCOUNT_NUMBER_HERE:snapshotcopygrant:COMPONENT_NAME_HERE* ",
+                "arn:aws:redshift:REGION_HERE:ACCOUNT_NUMBER_HERE:eventsubscription:COMPONENT_NAME_HERE* ",
+                "arn:aws:redshift:REGION_HERE:ACCOUNT_NUMBER_HERE:subnetgroup:COMPONENT_NAME_HERE* ",
+                "arn:aws:redshift:REGION_HERE:ACCOUNT_NUMBER_HERE:hsmclientcertificate:*"
+            ]
+        }
+    ]
+}

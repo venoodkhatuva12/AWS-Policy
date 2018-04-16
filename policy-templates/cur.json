@@ -1,0 +1,15 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "cur:DescribeReportDefinitions",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "cur:*",
+            "Resource": "arn:aws:cur:REGION_HERE:ACCOUNT_NUMBER_HERE:definition/COMPONENT_NAME_HERE*"
+        }
+    ]
+}

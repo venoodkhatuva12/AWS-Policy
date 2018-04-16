@@ -1,0 +1,25 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "cognito-identity:GetId",
+                "cognito-identity:SetIdentityPoolRoles",
+                "cognito-identity:ListIdentityPools",
+                "cognito-identity:CreateIdentityPool",
+                "cognito-identity:UnlinkIdentity",
+                "cognito-identity:DeleteIdentities",
+                "cognito-identity:GetOpenIdToken",
+                "cognito-identity:DescribeIdentity",
+                "cognito-identity:GetCredentialsForIdentity"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "cognito-identity:*",
+            "Resource": "arn:aws:cognito-identity:REGION_HERE:ACCOUNT_NUMBER_HERE:identitypool/*"
+        }
+    ]
+}

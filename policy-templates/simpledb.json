@@ -1,0 +1,18 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "sdb:Select",
+                "sdb:ListDomains"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "sdb:*",
+            "Resource": "arn:aws:sdb:REGION_HERE:ACCOUNT_NUMBER_HERE:domain/COMPONENT_NAME_HERE*"
+        }
+    ]
+}

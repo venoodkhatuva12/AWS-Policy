@@ -1,0 +1,24 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [{
+			"Effect": "Allow",
+			"Action": [
+				"codedeploy:List*",
+				"codedeploy:StopDeployment",
+				"codedeploy:ContinueDeployment"
+
+			],
+			"Resource": "*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": "codedeploy:*",
+			"Resource": [
+				"arn:aws:codedeploy:REGION_HERE:ACCOUNT_NUMBER_HERE:deploymentgroup:COMPONENT_NAME_HERE*",
+				"arn:aws:codedeploy:REGION_HERE:ACCOUNT_NUMBER_HERE:instance:COMPONENT_NAME_HERE*",
+				"arn:aws:codedeploy:REGION_HERE:ACCOUNT_NUMBER_HERE:deploymentconfig:COMPONENT_NAME_HERE*",
+				"arn:aws:codedeploy:REGION_HERE:ACCOUNT_NUMBER_HERE:application:COMPONENT_NAME_HERE*"
+			]
+		}
+	]
+}

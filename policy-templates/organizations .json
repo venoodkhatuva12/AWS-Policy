@@ -1,0 +1,31 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "organizations:List*",
+                "organizations:CreateAccount",
+                "organizations:DeleteOrganization",
+                "organizations:LeaveOrganization",
+                "organizations:DescribeOrganization",
+                "organizations:EnableAllFeatures",
+                "organizations:CreatePolicy",
+                "organizations:DescribeCreateAccountStatus",
+                "organizations:CreateOrganization"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "organizations:*",
+            "Resource": [
+                "arn:aws:organizations::*:handshake/o-*/*/h-*",
+                "arn:aws:organizations::*:account/o-*/*",
+                "arn:aws:organizations::*:root/o-*/r-*",
+                "arn:aws:organizations::*:ou/o-*/ou-*",
+                "arn:aws:organizations::*:policy/o-*>/*/p-*"
+            ]
+        }
+    ]
+}

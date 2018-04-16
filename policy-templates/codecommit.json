@@ -1,0 +1,15 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "codecommit:ListRepositories",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "codecommit:*",
+            "Resource": "arn:aws:codecommit:REGION_HERE:ACCOUNT_NUMBER_HERE:COMPONENT_NAME_HERE*"
+        }
+    ]
+}

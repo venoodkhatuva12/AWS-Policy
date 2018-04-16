@@ -1,0 +1,25 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [{
+			"Effect": "Allow",
+			"Action": [
+				"appsync:Get*",
+				"appsync:Update*",
+				"appsync:Create*",
+				"appsync:List*",
+				"appsync:Delete*",
+				"appsync:StartSchemaCreation"
+
+			],
+			"Resource": "*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": "appsync:*",
+			"Resource": [
+				"arn:aws:appsync:REGION_HERE :ACCOUNT_NUMBER_HERE:apis/*/types/COMPONENT_NAME_HERE/fields/COMPONENT_NAME_HERE",
+				"arn:aws:appsync:REGION_HERE :ACCOUNT_NUMBER_HERE :apis/*"
+			]
+		}
+	]
+}

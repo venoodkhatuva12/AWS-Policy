@@ -1,0 +1,23 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+           
+            "Effect": "Allow",
+            "Action": [
+                "autoscaling:Describe*"
+                
+            ],
+            "Resource": "*"
+        },
+        {
+            
+            "Effect": "Allow",
+            "Action": "autoscaling:*",
+            "Resource": [
+                "arn:aws:autoscaling:REGION_HERE:ACCOUNT_NUMBER_HERE:launchConfiguration:*:launchConfigurationName/COMPONENT_NAME_HERE ",
+                "arn:aws:autoscaling:REGION_HERE :ACCOUNT_NUMBER_HERE :autoScalingGroup:*:autoScalingGroupName/COMPONENT_NAME_HERE "
+            ]
+        }
+    ]
+}

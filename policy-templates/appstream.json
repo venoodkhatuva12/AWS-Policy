@@ -1,0 +1,30 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "appstream:UpdateDirectoryConfig",
+                "appstream:DeleteDirectoryConfig",
+                "appstream:DescribeDirectoryConfigs",
+                "appstream:UntagResource",
+                "appstream:CreateDirectoryConfig",
+                "appstream:DescribeSessions",
+                "appstream:ExpireSession",
+                "appstream:TagResource",
+                "appstream:ListTagsForResource"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "appstream:*",
+            "Resource": [
+                "arn:aws:appstream:REGION_HERE:ACCOUNT_NUMBER_HERE:stack/COMPONENT_NAME_HERE*",
+                "arn:aws:appstream:REGION_HERE:ACCOUNT_NUMBER_HERE:image/COMPONENT_NAME_HERE*",
+                "arn:aws:appstream:REGION_HERE:ACCOUNT_NUMBER_HERE:image-builder/COMPONENT_NAME_HERE*",
+                "arn:aws:appstream:REGION_HERE:ACCOUNT_NUMBER_HERE:fleet/COMPONENT_NAME_HERE*"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "codestar:List*",
+                "codestar:DescribeUserProfile",
+                "codestar:Create*",
+                "codestar:UpdateUserProfile",
+                "codestar:VerifyServiceRole",
+                "codestar:DeleteUserProfile"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "codestar:*",
+            "Resource": "arn:aws:codestar:REGION_HERE:ACCOUNT_NUMBER_HERE:project/*"
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "shield:DeleteSubscription",
+                "shield:CreateSubscription",
+                "shield:DescribeSubscription",
+                "shield:ListProtections",
+                "shield:ListAttacks"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "shield:*",
+            "Resource": [
+                "arn:aws:shield::ACCOUNT_NUMBER_HERE:attack/*",
+                "arn:aws:shield::ACCOUNT_NUMBER_HERE:protection/*"
+            ]
+        }
+    ]
+}

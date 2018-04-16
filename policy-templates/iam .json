@@ -1,0 +1,62 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:GenerateCredentialReport",
+                "iam:Get*",
+                "iam:DeleteAccountPasswordPolicy",
+                "iam:List*",
+                "iam:GenerateServiceLastAccessedDetails",
+                "iam:SimulateCustomPolicy",
+                "iam:UpdateAccountPasswordPolicy",
+                "iam:CreateAccountAlias",
+                "iam:DeleteAccountAlias"
+
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iam:*",
+            "Resource": [
+                "arn:aws:iam::ACCOUNT_NUMBER_HERE:sms-mfa/*",
+                "arn:aws:iam::ACCOUNT_NUMBER_HERE:instance-profile/COMPONENT_NAME_HERE*",
+                "arn:aws:iam::ACCOUNT_NUMBER_HERE:server-certificate/COMPONENT_NAME_HERE*",
+                "arn:aws:iam::ACCOUNT_NUMBER_HERE:group/COMPONENT_NAME_HERE*",
+                "arn:aws:iam::ACCOUNT_NUMBER_HERE:mfa/*/*",
+                "arn:aws:iam::ACCOUNT_NUMBER_HERE:saml-provider/COMPONENT_NAME_HERE*",
+                "arn:aws:iam::ACCOUNT_NUMBER_HERE:oidc-provider/COMPONENT_NAME_HERE*",
+                "arn:aws:iam::ACCOUNT_NUMBER_HERE:policy/COMPONENT_NAME_HERE*",
+                "arn:aws:iam::ACCOUNT_NUMBER_HERE:role/COMPONENT_NAME_HERE*",
+                "arn:aws:iam::ACCOUNT_NUMBER_HERE:user/COMPONENT_NAME_HERE*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iam:*",
+            "Resource": "arn:aws:iam::ACCOUNT_NUMBER_HERE:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iam:*",
+            "Resource": "arn:aws:iam::ACCOUNT_NUMBER_HERE:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iam:*",
+            "Resource": "arn:aws:iam::ACCOUNT_NUMBER_HERE:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iam:*",
+            "Resource": "arn:aws:iam::ACCOUNT_NUMBER_HERE:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iam:*",
+            "Resource": "arn:aws:iam::ACCOUNT_NUMBER_HERE:*"
+        }
+    ]
+}

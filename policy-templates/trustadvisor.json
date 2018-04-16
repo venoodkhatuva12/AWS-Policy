@@ -1,0 +1,18 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "trustedadvisor:UpdateNotificationPreferences",
+                "trustedadvisor:DescribeNotificationPreferences"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "trustedadvisor:*",
+            "Resource": "arn:aws:trustedadvisor:REGION_HERE:ACCOUNT_NUMBER_HERE:checks/*/*"
+        }
+    ]
+}

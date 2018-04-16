@@ -1,0 +1,13 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "mq:*",
+            "Resource": [
+                "arn:aws:mq:REGION_HERE:ACCOUNT_NUMBER_HERE:broker:*",
+                "arn:aws:mq:REGION_HERE:ACCOUNT_NUMBER_HERE:configuration:*"
+            ]
+        }
+    ]
+}

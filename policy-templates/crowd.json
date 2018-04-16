@@ -1,0 +1,10 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "crowd:*",
+            "Resource": "arn:aws:crowd:REGION_HERE:ACCOUNT_NUMBER_HERE:task/ACCOUNT_NUMBER_HERE/*"
+        }
+    ]
+}

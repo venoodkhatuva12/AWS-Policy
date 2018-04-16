@@ -1,0 +1,23 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "mobiletargeting:GetReports",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "mobiletargeting:*",
+            "Resource": "arn:aws:mobiletargeting:REGION_HERE:ACCOUNT_NUMBER_HERE:apps/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "mobiletargeting:*",
+            "Resource": [
+                "arn:aws:mobiletargeting:REGION_HERE:ACCOUNT_NUMBER_HERE:apps/*/campaigns/*",
+                "arn:aws:mobiletargeting:REGION_HERE:ACCOUNT_NUMBER_HERE:apps/*/segments/*"
+            ]
+        }
+    ]
+}

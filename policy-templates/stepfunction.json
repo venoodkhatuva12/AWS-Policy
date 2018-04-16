@@ -1,0 +1,28 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "states:SendTaskSuccess",
+                "states:ListStateMachines",
+                "states:SendTaskFailure",
+                "states:ListActivities",
+                "states:CreateActivity",
+                "states:StopExecution",
+                "states:SendTaskHeartbeat",
+                "states:CreateStateMachine"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "states:*",
+            "Resource": [
+                "arn:aws:states:REGION_HERE:ACCOUNT_NUMBER_HERE:execution:COMPONENT_NAME_HERE*:*",
+                "arn:aws:states:REGION_HERE:ACCOUNT_NUMBER_HERE:activity:COMPONENT_NAME_HERE*",
+                "arn:aws:states:REGION_HERE:ACCOUNT_NUMBER_HERE:stateMachine:COMPONENT_NAME_HERE*"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "dms:Describe*",
+                "dms:ModifyReplicationInstance",
+                "dms:Delete*",
+                "dms:Modify*",
+                "dms:StartReplicationTask",
+                "dms:Create*",
+                "dms:ListTagsForResource",
+                "dms:RemoveTagsFromResource",
+                "dms:TestConnection",
+                "dms:AddTagsToResource",
+                "dms:StopReplicationTask",
+                "dms:RefreshSchemas"
+            ],
+            "Resource": "*"
+        }
+    ]
+}

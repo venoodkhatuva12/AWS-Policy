@@ -1,0 +1,25 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "mobilehub:DescribeBundle",
+                "mobilehub:GetProjectSnapshot",
+                "mobilehub:List*",
+                "mobilehub:CreateServiceRole",
+                "mobilehub:CreateProject",
+                "mobilehub:ExportBundle",
+                "mobilehub:VerifyServiceRole",
+                "mobilehub:ImportProject",
+                "mobilehub:DeployToStage"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "mobilehub:*",
+            "Resource": "arn:aws:mobilehub:REGION_HERE:ACCOUNT_NUMBER_HERE:project/*"
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "cloudformation:CreateUploadBucket",
+                "cloudformation:EstimateTemplateCost",
+                "cloudformation:List*",
+                "cloudformation:PreviewStackUpdate",
+                "cloudformation:DescribeAccountLimits",
+                "cloudformation:DescribeChangeSet",
+                "cloudformation:ValidateTemplate"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "cloudformation:*",
+            "Resource": "arn:aws:cloudformation:REGION_HERE:ACCOUNT_NUMBER_HERE:stack/COMPONENT_NAME_HERE*/*"
+        }
+    ]
+}

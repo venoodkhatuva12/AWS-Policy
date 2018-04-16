@@ -1,0 +1,19 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "firehose:DescribeDeliveryStream",
+                "firehose:CreateDeliveryStream",
+                "firehose:ListDeliveryStreams"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "firehose:*",
+            "Resource": "arn:aws:firehose:REGION_HERE:ACCOUNT_NUMBER_HERE:deliverystream/COMPONENT_NAME_HERE*"
+        }
+    ]
+}

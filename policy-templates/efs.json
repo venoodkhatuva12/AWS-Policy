@@ -1,0 +1,15 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "elasticfilesystem:CreateFileSystem",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "elasticfilesystem:*",
+            "Resource": "arn:aws:elasticfilesystem:REGION_HERE:ACCOUNT_NUMBER_HERE:file-system/COMPONENT_NAME_HERE*"
+        }
+    ]
+}

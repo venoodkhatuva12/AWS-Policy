@@ -1,0 +1,21 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "glacier:SetDataRetrievalPolicy",
+                "glacier:GetDataRetrievalPolicy",
+                "glacier:PurchaseProvisionedCapacity",
+                "glacier:ListVaults",
+                "glacier:ListProvisionedCapacity"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "glacier:*",
+            "Resource": "arn:aws:glacier:REGION_HERE:ACCOUNT_NUMBER_HERE:vaults/COMPONENT_NAME_HERE*"
+        }
+    ]
+}

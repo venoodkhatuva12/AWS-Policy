@@ -1,0 +1,25 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [{
+			"Effect": "Allow",
+			"Action": "chime:*",
+			"Resource": "*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": [
+				"s3:Get*",
+				"s3:CreateBucket",
+				"s3:ListBucket",
+				"s3:DeleteBucket"
+
+			],
+			"Resource": "arn:aws:s3:::COMPONENT_NAME_HERE "
+		},
+		{
+			"Effect": "Allow",
+			"Action": "ds:ConnectDirectory",
+			"Resource": "*"
+		}
+	]
+}

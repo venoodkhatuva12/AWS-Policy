@@ -1,0 +1,25 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "mgh:ListProgressUpdateStreams",
+                "mgh:ListMigrationTasks",
+                "mgh:NotifyApplicationState",
+                "mgh:DescribeApplicationState"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "mgh:*",
+            "Resource": "arn:aws:mgh:REGION_HERE:ACCOUNT_NUMBER_HERE:progressUpdateStream/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "mgh:*",
+            "Resource": "arn:aws:mgh:REGION_HERE:ACCOUNT_NUMBER_HERE:progressUpdateStream/*/migrationTask/*"
+        }
+    ]
+}
