@@ -34,32 +34,31 @@ def merge_json(input_files,output_file="output.json"):
     for file in input_files:
         file = file + ".json"
         if "elasticcache.json" in file:
-           print "elasticcache.json"
-   				 output["message"] = "use service link policy cant use managed policy" 
+            output["message"] = "use service link policy cant use managed policy"
         else:
-          if os.path.isfile(file):
-            # Read file content
-            with open(file,"r") as f:
-                file_content = json.load(f)
-            for i, policy in enumerate(file_content["Statement"]):
-                if "Sid" in policy:
-                    policy["Sid"] = "Sid" + str(policy_number)
-                if "Resource" in policy:
-                    if type(policy["Resource"]) == list:
-                        for j,resource in enumerate(policy["Resource"]):
-                           if "REGION_HERE" in policy["Resource"][j]:
-                              policy["Resource"][j] = policy["Resource"][j].replace("REGION_HERE",args.region)
-                           if "COMPONENT_NAME_HERE" in policy["Resource"][j]:
-                              policy["Resource"][j] = policy["Resource"][j].replace("COMPONENT_NAME_HERE",args.component)
-                    else:
-                       if "REGION_HERE" in policy["Resource"]:
-                           policy["Resource"] = policy["Resource"].replace("REGION_HERE",args.region)
-                       if "COMPONENT_NAME_HERE" in policy["Resource"]:
-                           policy["Resource"] = policy["Resource"].replace("COMPONENT_NAME_HERE",args.component)
-                output["Statement"].append(policy)
-                policy_number += 1
-        else:
-            print "Policy does not exists"
+            if os.path.isfile(file):
+                # Read file content
+                with open(file,"r") as f:
+                    file_content = json.load(f)
+                for i, policy in enumerate(file_content["Statement"]):
+                    if "Sid" in policy:
+                        policy["Sid"] = "Sid" + str(policy_number)
+                    if "Resource" in policy:
+                        if type(policy["Resource"]) == list:
+                            for j,resource in enumerate(policy["Resource"]):
+                               if "REGION_HERE" in policy["Resource"][j]:
+                                  policy["Resource"][j] = policy["Resource"][j].replace("REGION_HERE",args.region)
+                               if "COMPONENT_NAME_HERE" in policy["Resource"][j]:
+                                  policy["Resource"][j] = policy["Resource"][j].replace("COMPONENT_NAME_HERE",args.component)
+                        else:
+                           if "REGION_HERE" in policy["Resource"]:
+                               policy["Resource"] = policy["Resource"].replace("REGION_HERE",args.region)
+                           if "COMPONENT_NAME_HERE" in policy["Resource"]:
+                               policy["Resource"] = policy["Resource"].replace("COMPONENT_NAME_HERE",args.component)
+                    output["Statement"].append(policy)
+                    policy_number += 1
+            else:
+                print "Policy does not exists"
     print output
     # Write file content
     with open(output_file,"a") as json_file:
