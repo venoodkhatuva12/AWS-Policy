@@ -25,7 +25,6 @@ def merge_json(input_files,output_file="output.json"):
     if os.path.isfile(output_file):
          os.remove(output_file)
     # read json file from current dir
-    output = []
     policy_number = 0
     output = {
                "Version": "2012-10-17",
@@ -35,28 +34,22 @@ def merge_json(input_files,output_file="output.json"):
         file = file + ".json"
         if os.path.isfile(file):
             # Read file content
-        with open(file,"r") as f:
+            with open(file,"r") as f:
                 file_content = json.load(f)
             for i, policy in enumerate(file_content["Statement"]):
                 if "Sid" in policy:
                     policy["Sid"] = "Sid" + str(policy_number)
                 if "Resource" in policy:
-                    if type(file_content["Statement"][i]["Resource"]) == list:
                     if type(policy["Resource"]) == list:
                         for j,resource in enumerate(policy["Resource"]):
                            if "REGION_HERE" in policy["Resource"][j]:
-                              file_content["Statement"][i]["Resource"][j] = file_content["Statement"][i]["Resource"][j].replace("REGION_HERE",args.region)
                               policy["Resource"][j] = policy["Resource"][j].replace("REGION_HERE",args.region)
                            if "COMPONENT_NAME_HERE" in policy["Resource"][j]:
-                              file_content["Statement"][i]["Resource"][j] = file_content["Statement"][i]["Resource"][j].replace("COMPONENT_NAME_HERE",args.component)
                               policy["Resource"][j] = policy["Resource"][j].replace("COMPONENT_NAME_HERE",args.component)
                     else:
                        if "REGION_HERE" in policy["Resource"]:
-                           file_content["Statement"][i]["Resource"] = file_content["Statement"][i]["Resource"].replace("REGION_HERE",args.region)
                            policy["Resource"] = policy["Resource"].replace("REGION_HERE",args.region)
                        if "COMPONENT_NAME_HERE" in policy["Resource"]:
-                           file_content["Statement"][i]["Resource"] = file_content["Statement"][i]["Resource"].replace("COMPONENT_NAME_HERE",args.component)
-                output.append(file_content)
                            policy["Resource"] = policy["Resource"].replace("COMPONENT_NAME_HERE",args.component)
                 output["Statement"].append(policy)
                 policy_number += 1
@@ -70,7 +63,6 @@ def merge_json(input_files,output_file="output.json"):
 
 
 if __name__ == '__main__':
-
   args = parse_arguments()
   my_services = args.services.split(",")
   print args.region
