@@ -28,7 +28,8 @@ def merge_json(input_files,output_file="output.json"):
     policy_number = 0
     output = {
                "Version": "2012-10-17",
-               "Statement": []
+               "Statement": [],
+               "message": ""
              }
     for file in input_files:
         file = file + ".json"
