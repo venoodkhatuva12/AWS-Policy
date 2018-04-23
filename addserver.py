@@ -20,7 +20,7 @@ def getParameter(FOX_ENV):
     )
     credentials = response['Parameters'][0]['Value']
     return credentials
-PASSWD = getParameter()
+
 def get_bu():
     '''
     gets bu of current node
