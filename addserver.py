@@ -109,7 +109,7 @@ def add_node():
     '''
     iplist = diff()
     for ip in iplist:
-        slackPasswd = getParameter()
+        slackPasswd = getParameter(parameter)
         bashCommand = "/opt/splunk/bin/splunk add search-server " + ip + " -auth admin:splunk -remoteUsername admin -remotePassword set(slackPasswd)"
         process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
         tmp_output, error = process.communicate()
@@ -121,7 +121,7 @@ def remove_node():
     members
     '''
     ipList = invertdiff()
-    slackPasswd = getParameter()
+    slackPasswd = getParameter(parameter)
     for ip in ipList:
         bashCommand = "/opt/splunk/bin/splunk remove search-server " + ip + " -auth admin:splunk -remoteUsername admin -remotePassword set(slackPasswd)"
         process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
