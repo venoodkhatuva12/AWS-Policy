@@ -108,9 +108,9 @@ def add_node():
     between the two lists built in get_splunk_nodes and get_consul_nodes
     '''
     iplist = diff()
-    splunk_passwd = getParameter(FOX_ENV)
+    splunkPasswd = getParameter(FOX_ENV)
     for ip in iplist:
-        bashCommand = "/opt/splunk/bin/splunk add search-server " + ip + " -auth admin:splunk -remoteUsername admin -remotePassword splunk_passwd:"
+        bashCommand = "/opt/splunk/bin/splunk add search-server " + ip + " -auth admin:splunk -remoteUsername admin -remotePassword splunkPasswd:"
         process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
         tmp_output, error = process.communicate()
 
@@ -121,9 +121,9 @@ def remove_node():
     members
     '''
     ipList = invertdiff()
-    splunk_passwd = getParameter(FOX_ENV)
+    splunkPasswd = getParameter(FOX_ENV)
     for ip in ipList:
-        bashCommand = "/opt/splunk/bin/splunk remove search-server " + ip + " -auth admin:splunk -remoteUsername admin -remotePassword splunk_passwd"
+        bashCommand = "/opt/splunk/bin/splunk remove search-server " + ip + " -auth admin:splunk -remoteUsername admin -remotePassword splunkPasswd"
         process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
         tmp_output, error = process.communicate
 
