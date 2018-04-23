@@ -20,7 +20,7 @@ def getParameter(parameter):
     )
     credentials = response['Parameters'][0]['Value']
     return credentials
-PASSWD = getParameter()
+
 def get_bu():
     '''
     gets bu of current node
@@ -90,7 +90,6 @@ def diff():
     lists
     '''
     splunk_ip_list = get_splunk_nodes()
-
     consul_ip_list = get_consul_nodes()
     diff_list = list(set(consul_ip_list) - set(splunk_ip_list))
     return diff_list
