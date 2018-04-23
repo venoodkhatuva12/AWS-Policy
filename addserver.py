@@ -29,8 +29,6 @@ def get_bu():
     bu = subprocess.check_output(bashCommand, shell=True)
     return bu
 
-splunk_passwd = getParameter(FOX_ENV)
-
 def all_bus():
     '''
     queries consul for all bus. returns a list of bus
@@ -110,8 +108,9 @@ def add_node():
     between the two lists built in get_splunk_nodes and get_consul_nodes
     '''
     iplist = diff()
+    splunk_passwd = getParameter(FOX_ENV)
     for ip in iplist:
-        bashCommand = "/opt/splunk/bin/splunk add search-server " + ip + " -auth admin:splunk -remoteUsername admin -remotePassword splunk"
+        bashCommand = "/opt/splunk/bin/splunk add search-server " + ip + " -auth admin:splunk -remoteUsername admin -remotePassword splunk_passwd:"
         process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
         tmp_output, error = process.communicate()
 
@@ -122,8 +121,9 @@ def remove_node():
     members
     '''
     ipList = invertdiff()
+    splunk_passwd = getParameter(FOX_ENV)
     for ip in ipList:
-        bashCommand = "/opt/splunk/bin/splunk remove search-server " + ip + " -auth admin:splunk -remoteUsername admin -remotePassword splunk"
+        bashCommand = "/opt/splunk/bin/splunk remove search-server " + ip + " -auth admin:splunk -remoteUsername admin -remotePassword splunk_passwd"
         process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
         tmp_output, error = process.communicate
 
