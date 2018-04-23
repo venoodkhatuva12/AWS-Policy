@@ -14,7 +14,7 @@ def getParameter(FOX_ENV):
     )
     response = ssm.get_parameters(
         Names=[
-            FOX_ENV,
+            parameter,
         ],
         WithDecryption=True
     )
