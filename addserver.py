@@ -29,6 +29,7 @@ def get_bu():
     bu = subprocess.check_output(bashCommand, shell=True)
     return bu
 
+splunk_passwd = getParameter(FOX_ENV)
 
 def all_bus():
     '''
