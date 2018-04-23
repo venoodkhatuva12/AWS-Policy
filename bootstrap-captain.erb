@@ -1,0 +1,136 @@
+#!/bin/bash
+
+set -x
+
+exec >> /var/log/bootstrap-captain.log
+exec 2>&1
+
+source /etc/ec2-tags
+source /etc/splunk_proxy.sh
+
+PASSWD=$( aws ssm get-parameters --names #{FOX_ENV}.#{FOX_BU}.splunk_web_password --with-decryption --region us-west-2 | jq -r '.Parameters[0].Value'")
+
+SEARCHHEADS=$(aws ec2 describe-instances \
+   --region "$REGION" \
+  --filters "Name=tag:env,Values=$ENV" \
+  "Name=tag:businessunit,Values=$BUSINESSUNIT" \
+  "Name=tag:role,Values=searchhead" \
+  "Name=instance-state-name,Values=running" \
+  --query "Reservations[*].Instances[*]".PrivateIpAddress \
+  --output text)
+
+SH_COUNT=$(aws autoscaling describe-auto-scaling-groups \
+    --auto-scaling-group-name "$ENV-$BUSINESSUNIT-searchhead" \
+    --query 'AutoScalingGroups[].DesiredCapacity' \
+    --output text)
+
+while [[ "$(echo "$SEARCHHEADS" | wc --words)" -lt $SH_COUNT ]] ; do
+  echo 'Waiting for searchheads...'
+  sleep 1
+  SEARCHHEADS=$(aws ec2 describe-instances \
+    --region "$REGION" \
+    --filters "Name=tag:env,Values=$ENV" \
+    "Name=tag:businessunit,Values=$BUSINESSUNIT" \
+    "Name=tag:role,Values=searchhead" \
+    "Name=instance-state-name,Values=running" \
+    --query "Reservations[*].Instances[*]".PrivateIpAddress \
+    --output text)
+done
+
+# Get ids to check who owns lock
+SEARCHHEAD_IDS=$(aws ec2 describe-instances \
+   --region "$REGION" \
+  --filters "Name=tag:env,Values=$ENV" \
+  "Name=tag:businessunit,Values=$BUSINESSUNIT" \
+  "Name=tag:role,Values=searchhead" \
+  "Name=instance-state-name,Values=running" \
+  --query "Reservations[*].Instances[*]".InstanceId \
+  --output text)
+
+echo "Searchhead IDS are: ${SEARCHHEAD_IDS}"
+
+captain_election(){
+  CAPTAIN=$(echo "$SEARCHHEADS" | tr " " '\n' | sort -g | head -n1)
+
+  MY_IP="$(curl http://169.254.169.254/latest/meta-data/local-ipv4)"
+
+  echo "The searchheads are $SEARCHHEADS"
+  echo "my ip is $MY_IP"
+
+  if [[ "$CAPTAIN" != "$MY_IP" ]]; then
+      echo "I'm not the captain."
+      exit 0
+  fi
+
+
+  shstring=""
+  # netcatting for splunk to be up on each node
+  for sh in $SEARCHHEADS ; do
+    while ! nc -vz "$sh" 8089 ; do
+      echo "Netcat failed on $sh. Trying again..."
+      sleep 1
+    done
+    shstring+="https://$sh:8089,"
+  done
+
+  # remove training comma
+  shstring=${shstring::-1}
+
+  # Add sleep to get rid of this
+  # uri=https://10.0.2.13:8089/services/shcluster/member/consensus/pseudoid/last_known_state?output_mode=json, socket_error=Connection refused;
+  echo 'quick wait to make sure all the searchheads are really available'
+  sleep 60
+
+  sudo -H -u svc_splunk_admin bash -c "/opt/splunk/bin/splunk bootstrap shcluster-captain \
+                                       -servers_list $shstring \
+                                       -auth <%= @username %>:<%= @$PASSWD %>"
+
+  result=$?
+  while [ $result -ne 0 ]; do
+    echo "captain bootstrap failed...let's try again in 30 seconds"
+    sleep 30
+    sudo -H -u svc_splunk_admin bash -c "/opt/splunk/bin/splunk bootstrap shcluster-captain \
+                                        -servers_list $shstring \
+                                        -auth <%= @username %>:<%= @$PASSWD %>"
+
+    result=$?
+
+  done
+
+  consul kv put "$BUSINESSUNIT/searchhead/captain-lock" "$INSTANCE_ID"
+}
+
+join_cluster(){
+    echo "Captain exists. Let's join the cluster"
+
+    # get other searchheads from consul
+    OTHER_SEARCHHEADS=$(consul members | grep "^searchhead-$BUSINESSUNIT" | grep alive | grep -v "$(hostname)" | awk '{print $2}' | cut -d: -f1)
+    # wait for splunk to be up
+    sleep 60
+    until service splunk status ; do
+      echo 'waiting for splunk to be up'
+      sleep 5
+    done
+    # try to join the cluster - try captain first
+    CAPTAIN_IP=$(consul kv get $BUSINESSUNIT/searchhead/captain)
+    sudo -H -u svc_splunk_admin bash -c "/opt/splunk/bin/splunk add shcluster-member -auth <%= @username %>:<%= @$PASSWD %> -current_member_uri https://$CAPTAIN_IP:8089"
+    # then try all others just in case captain fails
+    for sh in $OTHER_SEARCHHEADS ; do
+        sudo -H -u svc_splunk_admin bash -c "/opt/splunk/bin/splunk add shcluster-member -auth <%= @username %>:<%= @$PASSWD %> -current_member_uri https://$sh:8089"
+    done
+    exit 0
+}
+
+# MAIN
+
+# If lock exists and its owner is alive just join existing cluster
+# True if never ran against fed
+if ! consul kv get "$BUSINESSUNIT/searchhead/captain-lock"; then
+  captain_election
+elif echo "$SEARCHHEAD_IDS" | grep $(consul kv get "$BUSINESSUNIT/searchhead/captain-lock") ; then
+  echo "Captain lock is: $(consul kv get "$BUSINESSUNIT/searchhead/captain-lock")"
+  join_cluster
+else
+  captain_election
+fi
+exit 0
