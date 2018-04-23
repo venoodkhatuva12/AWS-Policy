@@ -5,7 +5,7 @@ import boto3
 
 #aws ssm get-parameters --names #{FOX_ENV}.#{FOX_BU}.splunk_web_password --with-decryption --region us-west-2 | jq -r '.Parameters[0].Value
 
-def getParameter(FOX_ENV):
+def getParameter(parameter):
     """
     Reads a secure parameter from AWS SSM service and fetch the Passwd.
     """
@@ -20,7 +20,7 @@ def getParameter(FOX_ENV):
     )
     credentials = response['Parameters'][0]['Value']
     return credentials
-
+PASSWD = getParameter()
 def get_bu():
     '''
     gets bu of current node
@@ -28,6 +28,7 @@ def get_bu():
     bashCommand = "source /etc/ec2-tags; echo -n $BUSINESSUNIT"
     bu = subprocess.check_output(bashCommand, shell=True)
     return bu
+
 
 def all_bus():
     '''
@@ -108,9 +109,9 @@ def add_node():
     between the two lists built in get_splunk_nodes and get_consul_nodes
     '''
     iplist = diff()
-    splunkPasswd = getParameter(FOX_ENV)
     for ip in iplist:
-        bashCommand = "/opt/splunk/bin/splunk add search-server " + ip + " -auth admin:splunk -remoteUsername admin -remotePassword splunkPasswd:"
+        slackPasswd = getParameter()
+        bashCommand = "/opt/splunk/bin/splunk add search-server " + ip + " -auth admin:splunk -remoteUsername admin -remotePassword set(slackPasswd)"
         process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
         tmp_output, error = process.communicate()
 
@@ -121,9 +122,9 @@ def remove_node():
     members
     '''
     ipList = invertdiff()
-    splunkPasswd = getParameter(FOX_ENV)
+    slackPasswd = getParameter()
     for ip in ipList:
-        bashCommand = "/opt/splunk/bin/splunk remove search-server " + ip + " -auth admin:splunk -remoteUsername admin -remotePassword splunkPasswd"
+        bashCommand = "/opt/splunk/bin/splunk remove search-server " + ip + " -auth admin:splunk -remoteUsername admin -remotePassword set(slackPasswd)"
         process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
         tmp_output, error = process.communicate
 
